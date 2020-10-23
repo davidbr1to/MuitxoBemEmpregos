@@ -11,7 +11,7 @@ class Portfolio extends Model
 
     protected $fillable = ['link'];
 
-    public static $rules = ['link' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/'];
+    public static $rules = ['link' => 'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/'];
     public static $messages = ['link.*' => "Url Inválida"];
 
     public function dono(){

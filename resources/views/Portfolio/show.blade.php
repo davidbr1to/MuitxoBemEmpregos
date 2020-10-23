@@ -21,7 +21,7 @@
                     <button type="submit" class="btn btn-secondary" >Editar Portfólio</button>
                     </form>
                 </div>
-                @endCan
+                @endcan
         </div>
             </div>
         </div>

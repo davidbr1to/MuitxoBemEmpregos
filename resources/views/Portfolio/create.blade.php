@@ -1,29 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('layouts/app')
+@section('head')
+@endsection
+@section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Create</title>
-</head>
 
-<body>
+<div class="jumbotron " id='jumbotron'>
     <div>
-        <form action="{{route('portfolios.store')}}" method="POST">
+        <form action="{{route('portfolios.store', $candidato->id)}}" method="POST">
             @csrf
-            <div>
-                <label for='link'>Link</label>
-                <input type='text' name='link' id='link'>
+            <div class="form-group">
+                <label for='link' class="col-md-3 col-form-label">Link</label>
+                <div class="col-md-6">
+                    <input type='text' class="form-control @error('link') is-invalid @enderror" placeholder = "Digite o link do seu Portfólio" name='link' id='link'/>    
+                    @error('link')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                    @enderror
+                </div>
             </div>
-            
-            <button type='submit'>Cadastrar</button>
+            <div class="col-md-1">
+                <button type='submit' class="btn btn-primary" >Finalizar</button>
+            </div>
         </form>
-        @if($errors->any())
-        @foreach ($errors->all() as $item)
-            <div>{{$item}}</div>
-        @endforeach
-        @endif
     </div>
-</body>
-
-</html>
+</div>
+    @endsection

@@ -26,7 +26,7 @@ class PortfolioController extends Controller
     public function create(Candidato $candidato)
     {
         $this->authorize('adicionarPortfolioCheck',$candidato);
-        return view('Portfolio.create');
+        return view('Portfolio.create')->with('candidato', $candidato);
     }
 
     /**
@@ -48,7 +48,7 @@ class PortfolioController extends Controller
 
 
         }catch (\App\Validator\ValidationException $e) {
-            return redirect(route('portfolios.create'))->withErrors($e->getValidator())->withInput();
+            return redirect(route('portfolios.create', \Auth::user()->candidato()->get()->first()->id))->withErrors($e->getValidator())->withInput();
         }
     }
 
